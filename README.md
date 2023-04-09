@@ -6,7 +6,7 @@
 
 ___
 ### Стек:
-- python 3.11
+- python 3.11.3
 - Django 4.2
 - PostgreSQL 12.4-alpine
 
