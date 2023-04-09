@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+
 from envparse import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -18,7 +19,7 @@ from envparse import env
 BASE_DIR = Path(__file__).resolve().parent.parent
 ENV_PATH = BASE_DIR.joinpath('.env')
 if ENV_PATH.is_file():
-     env.read_envfile(ENV_PATH)
+    env.read_envfile(ENV_PATH)
 
 
 # Quick-start development settings - unsuitable for production
@@ -82,16 +83,15 @@ WSGI_APPLICATION = 'todolist.wsgi.application'
 AUTH_USER_MODEL = 'core.User'
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": env.str('POSTGRES_DB'),
-        "USER": env.str('POSTGRES_USER'),
-        "PASSWORD": env.str('POSTGRES_PASSWORD'),
-        "HOST": env.str('POSTGRES_HOST', default='127.0.0.1'),
-        "PORT": env.int('POSTGRES_PORT', default=5432),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env.str('POSTGRES_DB'),
+        'USER': env.str('POSTGRES_USER'),
+        'PASSWORD': env.str('POSTGRES_PASSWORD'),
+        'HOST': env.str('POSTGRES_HOST', default='127.0.0.1'),
+        'PORT': env.int('POSTGRES_PORT', default=5432),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -128,7 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = BASE_DIR.joinpath('static')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
