@@ -15,4 +15,5 @@ ___
 ```
 docker-compose up -d
 python manage.py migrate
+
 ```

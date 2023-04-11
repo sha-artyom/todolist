@@ -1,0 +1,47 @@
+version: "3.8"
+
+services:
+
+  db:
+    image: postgres:12.4
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - diplom_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}
+      timeout: 3s
+      retries: 10
+      interval: 3s
+
+  api:
+    image: vip-artyom/todolist:latest
+    env_file: .env
+    depends_on:
+      db:
+        condition: service_healthy
+
+  collect_static:
+    image: vip-artyom/todolist:latest
+    env_file: .env
+    entrypoint: ''
+    volumes:
+      - django_static:/opt/static/
+    command: python manage.py collectstatic -c --no-input
+
+  frontend:
+    image: sermalenk/skypro-front:lesson-34
+    ports:
+      - "80:80"
+    depends_on:
+      collect_static:
+        condition: service_completed_successfully
+    volumes:
+      - django_static:/usr/share/nginx/html/static/
+      - ./deploy/nginx.conf:/etc/nginx/conf.d/default.conf
+
+volumes:
+  diplom_pg_data:
+  django_static:
