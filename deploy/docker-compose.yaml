@@ -17,14 +17,14 @@ services:
       interval: 3s
 
   api:
-    image: Vip-Artyom/todolist:latest
+    image: vip-artyom/todolist:latest
     env_file: .env
     depends_on:
       db:
         condition: service_healthy
 
   collect_static:
-    image: Vip-Artyom/todolist:latest
+    image: vip-artyom/todolist:latest
     env_file: .env
     entrypoint: ''
     volumes:
