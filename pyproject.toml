@@ -11,10 +11,14 @@ django = "^4.2"
 envparse = "^0.2.0"
 psycopg2-binary = "^2.9.6"
 gunicorn = "^20.1.0"
+djangorestframework = "^3.14.0"
+social-auth-app-django = "^5.2.0"
+django-filter = "^23.1"
 
 
 [tool.poetry.group.dev.dependencies]
 ansible-vault-win = "^1.0.0"
+django-extensions = "^3.2.1"
 
 [build-system]
 requires = ["poetry-core"]
