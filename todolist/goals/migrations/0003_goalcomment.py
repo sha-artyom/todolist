@@ -20,8 +20,10 @@ class Migration(migrations.Migration):
                 ('created', models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')),
                 ('updated', models.DateTimeField(auto_now=True, verbose_name='Дата последнего обновления')),
                 ('text', models.TextField(max_length=255, verbose_name='Комментарий')),
-                ('goal', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='goals.goal', verbose_name='Цель')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to=settings.AUTH_USER_MODEL, verbose_name='Автор')),
+                ('goal', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                           to='goals.goal', verbose_name='Цель')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT,
+                                           to=settings.AUTH_USER_MODEL, verbose_name='Автор')),
             ],
             options={
                 'verbose_name': 'Комментарий',

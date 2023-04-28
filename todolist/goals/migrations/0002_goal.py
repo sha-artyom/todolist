@@ -22,10 +22,14 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=255)),
                 ('description', models.TextField(blank=True, null=True)),
                 ('due_date', models.DateField(blank=True, null=True)),
-                ('status', models.PositiveSmallIntegerField(choices=[(1, 'К выполнению'), (2, 'В процессе'), (3, 'Выполнено'), (4, 'Архив')], default=1)),
-                ('priority', models.PositiveSmallIntegerField(choices=[(1, 'Низкий'), (2, 'Средний'), (3, 'Высокий'), (4, 'Критичный')], default=2)),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='goals', to='goals.goalcategory')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='goals', to=settings.AUTH_USER_MODEL)),
+                ('status', models.PositiveSmallIntegerField(choices=[
+                    (1, 'К выполнению'), (2, 'В процессе'), (3, 'Выполнено'), (4, 'Архив')], default=1)),
+                ('priority', models.PositiveSmallIntegerField(choices=[
+                    (1, 'Низкий'), (2, 'Средний'), (3, 'Высокий'), (4, 'Критичный')], default=2)),
+                ('category', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT,
+                                               related_name='goals', to='goals.goalcategory')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT,
+                                           related_name='goals', to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'verbose_name': 'Цель',
