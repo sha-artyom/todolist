@@ -22,7 +22,8 @@ class Migration(migrations.Migration):
                 ('updated', models.DateTimeField(auto_now=True, verbose_name='Дата последнего обновления')),
                 ('title', models.CharField(max_length=255, verbose_name='Название')),
                 ('is_deleted', models.BooleanField(default=False, verbose_name='Удалена')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to=settings.AUTH_USER_MODEL, verbose_name='Автор')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to=settings.AUTH_USER_MODEL,
+                                           verbose_name='Автор')),
             ],
             options={
                 'verbose_name': 'Категория',

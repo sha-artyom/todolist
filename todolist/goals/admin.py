@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from todolist.goals.models import Goal, GoalCategory, GoalComment
+from todolist.goals.models import Board, Goal, GoalCategory, GoalComment
 
 
 @admin.register(GoalCategory)
@@ -21,3 +21,9 @@ class GoalAdmin(admin.ModelAdmin):
 class GoalCommentAdmin(admin.ModelAdmin):
     list_display = ('goal', 'user', 'text', 'created', 'updated')
     search_fields = ('goal', 'text', 'user')
+
+
+@admin.register(Board)
+class BoardAdmin(admin.ModelAdmin):
+    list_display = ('title', 'created', 'updated')
+    search_fields = ('title',)
